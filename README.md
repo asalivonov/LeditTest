@@ -1,5 +1,18 @@
 # LeditTest
 This is Demo application built on JAVA SE platform developed to ilustrate ability to create simple CLI text editor
+ 
+Usage:
+java -jar .\build\libs\leditor.jar c:\temp\myfile.txt
+ 
+Commands:
+list - list each line in n:xxx format, e.g.
+1: first line
+2: second line
+3: last line
+del n - delete line at n
+ins n - insert a line at n
+save - saves to disk
+quit - quits the editor and returns to the command line
 
 ## Installation:
 1. Latest JDK - [link to installation guide](https://docs.oracle.com/en/java/javase/16/install/overview-jdk-installation.html)
