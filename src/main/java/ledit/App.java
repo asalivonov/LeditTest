@@ -7,12 +7,30 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 
+import command.AbstarctCommandFactory;
+import command.IEditableFile;
+import command.TextFactoryProducer;
+
 public class App {
 	
 	static final String TEST_FILE = "D:\\my\\ledit\\test.txt";
+	static final String HELP = "Usage:\r\n"
+			+ "lineeditor c:\\temp\\myfile.txt\r\n"
+			+ "(displays a >> prompt)\r\n"
+			+ " \r\n"
+			+ "Commands:\r\n"
+			+ "list - list each line in n:xxx format, e.g.\r\n"
+			+ "1: first line\r\n"
+			+ "2: second line\r\n"
+			+ "3: last line\r\n"
+			+ "del n - delete line at n\r\n"
+			+ "ins n - insert a line at n\r\n"
+			+ "save - saves to disk\r\n"
+			+ "quit - quits the editor and returns to the command line";
 
     public static void main(String[] args) {
-    	TextFile someFile = null;
+    	IEditableFile someFile = null;
+    	AbstarctCommandFactory cf = TextFactoryProducer.getFactory(false);
 		try {
 			someFile = getTextFile(args);
 		} catch (Exception e1) {
@@ -21,7 +39,8 @@ public class App {
 		}
 		if(someFile != null) {
 			try {
-				CommandReader.processCommands(someFile);
+				CommandProcessor cr = new CommandProcessor(cf);
+				cr.processCommands(someFile);
 			} catch (IOException e) {
 				System.out.println("CRITICAL ERROR during command execution");
 			}
@@ -29,16 +48,16 @@ public class App {
         
     }
     
-    private static TextFile getTextFile(String[] args) throws IOException {
+    private static IEditableFile getTextFile(String[] args) throws IOException {
     	if(args.length > 0) {
-    		TextFile someFile = new TextFile(args[0]);
-    		if(someFile.exists() && someFile.canRead()) {
+    		IEditableFile someFile = new EditableTextFile(args[0]);
+    		if(someFile.getFile().exists() && someFile.getFile().canRead()) {
     			return someFile;
     		}
     	}
     	
     	System.out.println("ERROR Please secify correct file, using test file for now");
     	//return null;
-		return new TextFile(TEST_FILE);
+		return new EditableTextFile(TEST_FILE);
     }
 }
