@@ -3,6 +3,7 @@
  */
 package main.java.ledit;
 
+import java.io.File;
 import java.io.IOException;
 
 import main.java.command.AbstarctCommandFactory;
@@ -11,7 +12,7 @@ import main.java.command.TextFactoryProducer;
 
 public class App {
 	
-	static final String TEST_FILE = "D:\\my\\ledit\\test.txt";
+	static final String TEST_FILE = "test.txt";
 	static final String HELP = "Usage:\r\n"
 			+ "lineeditor c:\\temp\\myfile.txt\r\n"
 			+ "(displays a >> prompt)\r\n"
@@ -27,18 +28,18 @@ public class App {
 			+ "quit - quits the editor and returns to the command line";
 
     public static void main(String[] args) {
+    	System.out.println("Working Directory = " + System.getProperty("user.dir"));
     	IEditableFile someFile = null;
     	AbstarctCommandFactory cf = TextFactoryProducer.getFactory(false);
 		try {
-			someFile = getTextFile(args);
+			someFile = getEditableFile(args);
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
 			System.out.println("CRITICAL ERROR Please secify correct file in UTF8 format");
 		}
 		if(someFile != null) {
 			try {
-				CommandProcessor cr = new CommandProcessor(cf);
-				cr.processCommands(someFile);
+				CommandProcessor cp = new CommandProcessor(cf);
+				cp.processCommands(someFile);
 			} catch (IOException e) {
 				System.out.println("CRITICAL ERROR during command execution");
 			}
@@ -46,16 +47,18 @@ public class App {
         
     }
     
-    private static IEditableFile getTextFile(String[] args) throws IOException {
+    private static IEditableFile getEditableFile(String[] args) throws IOException {
     	if(args.length > 0) {
-    		IEditableFile someFile = new EditableTextFile(args[0]);
-    		if(someFile.getFile().exists() && someFile.getFile().canRead()) {
+    		File file = new File(args[0]);
+    		if(file.exists() && file.canRead()) {
+    			IEditableFile someFile = new EditableTextFile(file);
     			return someFile;
     		}
     	}
     	
+    	
     	System.out.println("ERROR Please secify correct file, using test file for now");
     	//return null;
-		return new EditableTextFile(TEST_FILE);
+		return new EditableTextFile(new File(TEST_FILE));
     }
 }

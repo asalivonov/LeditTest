@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.List;
 
 public interface IEditableFile extends Iterable<String>{
-	 void save() throws IOException ;
 	 File getFile();
 	 /*
 	  * Number of lines in file

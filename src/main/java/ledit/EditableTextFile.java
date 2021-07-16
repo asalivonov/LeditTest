@@ -1,13 +1,10 @@
 package main.java.ledit;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,8 +23,8 @@ public class EditableTextFile implements IEditableFile {
 	}
 		
 
-	EditableTextFile(String someFile) throws IOException {
-		file = new File(someFile);
+	EditableTextFile(File file) throws IOException {
+		this.file = file;
 		CommandProcessor.printHelp();	
 		init();
 	}
@@ -41,18 +38,6 @@ public class EditableTextFile implements IEditableFile {
 	}
 	
 
-	public void save() throws IOException {
-		System.out.println("Saving file:" + file.getName());
-		Path path = Paths.get(file.getAbsolutePath());
-		Files.delete(path);
-		try (BufferedWriter bufferedWriter = Files.newBufferedWriter(path,
-                StandardOpenOption.CREATE_NEW)) {
-			for(String line: lines) {
-				bufferedWriter.write(line + "\n");
-			}
-        }
-		
-	}
 
 	@Override
 	public Iterator<String> iterator() {
