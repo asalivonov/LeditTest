@@ -5,14 +5,11 @@
  * For more details take a look at the 'Building Java & JVM projects' chapter in the Gradle
  * User Manual available at https://docs.gradle.org/7.1.1/userguide/building_java_projects.html
  */
-//apply plugin: 'java'
-//apply plugin: 'java-library-distribution'
 
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
- //  id 'java'
-   // id 'java-library-distribution'
+
 }
 
 archivesBaseName = 'leditor'
@@ -37,11 +34,11 @@ distZip.shouldRunAfter(build)
 
 application {
     // Define the main class for the application.
-    mainClass = 'ledit.App'
+    mainClass = 'main.java.ledit.App'
 }
 
 jar {
     manifest {
-        attributes 'Main-Class': 'ledit.App'
+        attributes 'Main-Class': 'main.java.ledit.App'
     }
 }

@@ -1,4 +1,4 @@
-package command;
+package main.java.command;
 
 public class TextFactoryProducer {
 	

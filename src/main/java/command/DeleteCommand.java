@@ -1,4 +1,4 @@
-package command;
+package main.java.command;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,10 +12,9 @@ public class DeleteCommand extends AFileCommand {
 
 	@Override
 	protected boolean execute() throws IOException {
-		List<String> lines = efile.getLines();
 		//-1 because we start form 0
-		if(lineNumer >= 1 && lineNumer < lines.size()-1) {
-			lines.remove(lineNumer-1);
+		if(lineNumer >= 1 && lineNumer < efile.size()-1) {
+			efile.deleteLine(lineNumer);
 			System.out.println("deleted line:" + lineNumer);
 			listLines(lineNumer - 2, lineNumer + 2);
 		} else {

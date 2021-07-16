@@ -1,18 +1,18 @@
-package ledit;
+package main.java.ledit;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Stream;
-
-import command.IEditableFile;
-
 import java.util.stream.Collectors;
+
+import main.java.command.IEditableFile;
 
 
 public class EditableTextFile implements IEditableFile {
@@ -24,10 +24,7 @@ public class EditableTextFile implements IEditableFile {
 	public File getFile() {
 		return file;
 	}
-	
-	public List<String> getLines(){
-		return lines;
-	}	
+		
 
 	EditableTextFile(String someFile) throws IOException {
 		file = new File(someFile);
@@ -60,6 +57,30 @@ public class EditableTextFile implements IEditableFile {
 	@Override
 	public Iterator<String> iterator() {
 		return lines.iterator();
+	}
+
+
+	@Override
+	public int size() {
+		return lines.size();
+	}
+
+
+	@Override
+	public void insertLine(String line, int lineNumber) {
+		lines.add(lineNumber-1, line);
+	}
+
+
+	@Override
+	public String getLine(int lineNumber) {
+		return lines.get(lineNumber-1);
+	}
+
+
+	@Override
+	public void deleteLine(int lineNumber) {
+		lines.remove(lineNumber-1);		
 	}
 	
 	

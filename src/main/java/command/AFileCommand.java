@@ -1,4 +1,4 @@
-package command;
+package main.java.command;
 
 import java.io.IOException;
 import java.util.List;
@@ -37,11 +37,11 @@ abstract class AFileCommand implements IRunableCommand{
 	}
 	
 	protected void listLines(int lineFrom, int lineTo) {
-		List<String> lines = efile.getLines();
-		if(lineFrom < 1) lineFrom =1;
-		if(lineTo > lines.size()-1) lineTo = lines.size();
+		if(lineFrom < 1) lineFrom = 1;
+		if(lineTo > efile.size()-1) lineTo = efile.size();
+		 
 		 for(int i = lineFrom-1 ; i<=lineTo-1 ; i++ ) {
-			 System.out.println((i+1) + " : " + lines.get(i));
+			 System.out.println(i + " : " + efile.getLine(i));
 		 }
 	}
 }

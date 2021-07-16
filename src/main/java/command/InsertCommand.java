@@ -1,9 +1,10 @@
-package command;
+package main.java.command;
 
 import java.io.IOException;
 import java.util.List;
 
-import ledit.CommandProcessor;
+import main.java.ledit.CommandProcessor;
+
 
 public class InsertCommand extends AFileCommand {
 
@@ -16,9 +17,8 @@ public class InsertCommand extends AFileCommand {
 	@Override
 	protected boolean execute() throws IOException {
 		String newLine = CommandProcessor.readConsole("Enter new line:");
-		List<String> lines = efile.getLines();
-		if(lineNumer > 1 && lineNumer < lines.size()-1) {
-			lines.add(lineNumer - 1, newLine);
+		if(lineNumer > 1 && lineNumer < efile.size()-1) {
+			efile.insertLine(newLine, lineNumer);
 			System.out.println("New line inserted:");
 			listLines(lineNumer - 2, lineNumer + 2);
 		} else {

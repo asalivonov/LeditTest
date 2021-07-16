@@ -1,13 +1,13 @@
-package ledit;
+package main.java.ledit;
 
 import java.io.BufferedReader;
 import java.io.Console;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import command.AbstarctCommandFactory;
-import command.IEditableFile;
-import command.IRunableCommand;
+import main.java.command.AbstarctCommandFactory;
+import main.java.command.IEditableFile;
+import main.java.command.IRunableCommand;
 
 public class CommandProcessor {
 	

@@ -1,4 +1,4 @@
-package command;
+package main.java.command;
 
 public class SmallFileCommandFactory extends AbstarctCommandFactory{
 	
@@ -25,6 +25,7 @@ public class SmallFileCommandFactory extends AbstarctCommandFactory{
 			break;
 		case "q" :
 		case "quit": cmd = new QuitCommand(words, efile);
+			break;
 		default:
 			System.out.println("ERROR Command is unknown:" + cmd);
 		}

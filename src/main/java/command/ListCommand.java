@@ -1,4 +1,4 @@
-package command;
+package main.java.command;
 
 import java.io.IOException;
 
@@ -12,7 +12,7 @@ public class ListCommand extends AFileCommand {
 	@Override
 	protected boolean execute() throws IOException {
 		int i = 1;
-		 for(String line : efile.getLines()) {
+		 for(String line : efile) {
 			 System.out.println((i++) + " : " + line);
 		 }
 		 return true;
