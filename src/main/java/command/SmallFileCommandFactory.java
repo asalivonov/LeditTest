@@ -27,7 +27,7 @@ public class SmallFileCommandFactory extends AbstarctCommandFactory{
 		case "quit": cmd = new QuitCommand(words, efile);
 			break;
 		default:
-			System.out.println("ERROR Command is unknown:" + cmd);
+			cmd = new UnknownCommand();
 		}
 		
 		return cmd;

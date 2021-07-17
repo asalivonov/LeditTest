@@ -6,7 +6,6 @@ package main.java.ledit;
 import java.io.File;
 import java.io.IOException;
 
-import main.java.command.AbstarctCommandFactory;
 import main.java.command.IEditableFile;
 import main.java.command.TextFactoryProducer;
 
@@ -30,7 +29,7 @@ public class App {
     public static void main(String[] args) {
     	System.out.println("Working Directory = " + System.getProperty("user.dir"));
     	IEditableFile someFile = null;
-    	AbstarctCommandFactory cf = TextFactoryProducer.getFactory(false);
+
 		try {
 			someFile = getEditableFile(args);
 		} catch (Exception e1) {
@@ -38,7 +37,7 @@ public class App {
 		}
 		if(someFile != null) {
 			try {
-				CommandProcessor cp = new CommandProcessor(cf);
+				CommandProcessor cp = new CommandProcessor(TextFactoryProducer.getFactory(false));
 				cp.processCommands(someFile);
 			} catch (IOException e) {
 				System.out.println("CRITICAL ERROR during command execution");
