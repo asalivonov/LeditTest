@@ -30,6 +30,8 @@ dependencies {
     implementation 'com.google.guava:guava:30.1-jre'
 }
 
+build.dependsOn test
+
 // Task "distZip" added by plugin "java-library-distribution":
 distZip.shouldRunAfter(build)
 
