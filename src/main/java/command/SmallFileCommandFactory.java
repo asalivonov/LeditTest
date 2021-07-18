@@ -6,10 +6,15 @@ public class SmallFileCommandFactory extends AbstarctCommandFactory{
 	
 	public IRunableCommand getCommand(String input, IEditableFile efile) {
 		IRunableCommand cmd = null;
+		if(input == null || input.isBlank()) {
+			return null;
+		}
 		
 		String[] words = input.split(" ");
 		String cmdName = words[0];
 		System.out.println("Command:" + cmdName);
+		
+		
 		switch (cmdName) {
 		case "i":
 		case "ins": cmd = new InsertCommand(words, efile);

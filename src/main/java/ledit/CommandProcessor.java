@@ -50,8 +50,4 @@ public class CommandProcessor {
 		return line;
 	}
 	
-	
-	public static void printHelp() {
-		//System.out.println(HELP);
-	}
 }

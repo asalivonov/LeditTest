@@ -1,13 +1,11 @@
 package main.java.command;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.List;
 
 public interface IEditableFile extends Iterable<String>{
 	 File getFile();
 	 /*
-	  * Number of lines in file
+	  * returns Number of lines in file
 	  */
 	 int size();
 	 void insertLine(String line, int lineNumber);

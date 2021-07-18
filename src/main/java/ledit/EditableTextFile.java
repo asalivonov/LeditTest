@@ -1,13 +1,9 @@
 package main.java.ledit;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import main.java.command.IEditableFile;
 
@@ -23,21 +19,11 @@ public class EditableTextFile implements IEditableFile {
 	}
 		
 
-	EditableTextFile(File file) throws IOException {
+	EditableTextFile(File file, List<String> list) throws IOException {
 		this.file = file;
-		CommandProcessor.printHelp();	
-		init();
+		lines = list;
 	}
 	
-	private void init() throws IOException {
-		System.out.println("Reading file:" + file.getName());
-		try (BufferedReader br = Files.newBufferedReader(Paths.get(file.getAbsolutePath()))) {
-            lines = br.lines().collect(Collectors.toList());
-        } 
-
-	}
-	
-
 
 	@Override
 	public Iterator<String> iterator() {

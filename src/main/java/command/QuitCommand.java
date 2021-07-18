@@ -11,7 +11,7 @@ public class QuitCommand extends AFileCommand {
 
 	@Override
 	protected boolean execute() throws IOException {
-		// TODO Auto-generated method stub
+		//TODO some code to ask user if he/she wants to save before exit
 		return false;
 	}
 	
