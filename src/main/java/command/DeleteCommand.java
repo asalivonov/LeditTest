@@ -1,13 +1,12 @@
 package main.java.command;
 
 import java.io.IOException;
-import java.util.List;
 
 
 public class DeleteCommand extends AFileCommand {
 
-	public DeleteCommand(String[] words, IEditableFile efile) {
-		super(words, efile);
+	public DeleteCommand(String[] params, IEditableFile efile) {
+		super(params, efile);
 	}
 
 	@Override

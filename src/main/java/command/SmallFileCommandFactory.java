@@ -14,7 +14,6 @@ public class SmallFileCommandFactory extends AbstarctCommandFactory{
 		String cmdName = words[0];
 		System.out.println("Command:" + cmdName);
 		
-		
 		switch (cmdName) {
 		case "i":
 		case "ins": cmd = new InsertCommand(words, efile);
