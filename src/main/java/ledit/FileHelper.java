@@ -17,9 +17,13 @@ public class FileHelper {
 	
 	public static List<String> readLinesFromFile(File file) throws IOException{
 		System.out.println("Reading file:" + file.getName());
-		try (BufferedReader br = Files.newBufferedReader(Paths.get(file.getAbsolutePath()))) {
-            return br.lines().collect(Collectors.toList());
-        } 
+		List<String> lines = null;
+		if(file.exists() && file.canRead()) {
+			try (BufferedReader br = Files.newBufferedReader(Paths.get(file.getAbsolutePath()))) {
+				lines =  br.lines().collect(Collectors.toList());
+	        }
+		} 
+		return lines;
 	}
 
 	public static void writeLinesToFile(IEditableFile efile) throws IOException {

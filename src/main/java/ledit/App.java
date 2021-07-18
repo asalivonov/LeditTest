@@ -50,13 +50,10 @@ public class App {
     	
     	if(args != null && args.length > 0) {
     		File file = new File(args[0]);
-    		if(file.exists() && file.canRead()) {
-    			List<String> lines = FileHelper.readLinesFromFile(file);
-    			someFile = new EditableTextFile(file, lines);
-    		}
+    		List<String> lines = FileHelper.readLinesFromFile(file);
+			someFile = new EditableTextFile(file, lines);
     	}
     	
     	return someFile;
-		//return new EditableTextFile(new File(TEST_FILE));
     }
 }
