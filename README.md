@@ -32,4 +32,4 @@ Execute following command from the the project directory in console:
 
 ## Limitations
 The application can read only files in UTF8 format. 
-File size should not be very big as there is no pagination implemented and it should fit in RAM and console cach
+File size should not be very big as there is no pagination implemented and it should fit in RAM and console cache
