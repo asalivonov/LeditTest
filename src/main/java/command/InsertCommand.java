@@ -15,13 +15,13 @@ public class InsertCommand extends AFileCommand {
 
 	@Override
 	protected boolean execute() throws IOException {
-		String newLine = CommandProcessor.readConsole("Enter new line:");
-		if(lineNumer > 1 && lineNumer < efile.size()-1) {
+		if(lineNumer > 0 && lineNumer <= efile.size()) {
+			String newLine = CommandProcessor.readConsole("Enter new line:");
 			efile.insertLine(newLine, lineNumer);
 			System.out.println("New line inserted:");
 			listLines(lineNumer - 2, lineNumer + 2);
 		} else {
-			System.out.println("ERROR incorrect line number");
+			System.out.println("ERROR incorrect line number, line number should be between 1 and " + efile.size());
 		}
 		return true;
 	}

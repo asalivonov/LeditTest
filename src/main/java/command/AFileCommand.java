@@ -39,7 +39,7 @@ abstract class AFileCommand implements IRunableCommand{
 		if(lineFrom < 1) lineFrom = 1;
 		if(lineTo > efile.size()-1) lineTo = efile.size();
 		 
-		 for(int i = lineFrom-1 ; i<=lineTo-1 ; i++ ) {
+		 for(int i = lineFrom ; i<=lineTo ; i++ ) {
 			 System.out.println(i + " : " + efile.getLine(i));
 		 }
 	}

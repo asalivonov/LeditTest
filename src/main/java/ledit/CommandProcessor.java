@@ -20,7 +20,7 @@ public class CommandProcessor {
 		
 	void processCommands(IEditableFile tf) throws IOException {
 		
-		while(readCmd(tf))
+		while(readCmd(tf));
 		
 		System.out.println("Exiting application");
 	}
