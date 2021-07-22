@@ -17,7 +17,7 @@ public class DeleteCommand extends AFileCommand {
 			System.out.println("deleted line:" + lineNumer);
 			listLines(lineNumer - 2, lineNumer + 2);
 		} else {
-			System.out.println("ERROR incorrect line number");
+			System.out.println("ERROR incorrect line number, line number should be between 1 and " + efile.size());
 		}
 		
 		return true;
