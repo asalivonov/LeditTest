@@ -2,6 +2,7 @@ package main.java.ledit;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 
 import main.java.command.IEditableFile;
@@ -53,9 +54,10 @@ public class App {
     	if(args != null && args.length > 0) {
     		File file = new File(args[0]);
     		List<String> lines = FileHelper.readLinesFromFile(file);
-    		if(lines != null) {
-    			someFile = new EditableTextFile(file, lines);
+    		if(lines == null) {
+    			lines = new LinkedList<String>();
     		}
+    		someFile = new EditableTextFile(file, lines); 
 			
     	}
     	

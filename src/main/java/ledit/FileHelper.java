@@ -23,14 +23,18 @@ public class FileHelper {
 				lines =  br.lines().collect(Collectors.toList());
 	        }
 		} else {
-			System.out.println("CRITICAL ERROR File does not exist or we cannot read it, please try another file");
+			System.out.println(" ERROR File does not exist or we cannot read it, please try another file, "
+					+ "or continue editing and we will create one for you");
 		}
 		return lines;
 	}
 
 	public static void writeLinesToFile(IEditableFile efile) throws IOException {
 		Path path = Paths.get(efile.getFile().getAbsolutePath());
-		Files.delete(path);
+		if(efile.getFile().exists()) {
+			Files.delete(path);
+		}
+		
 		try (BufferedWriter bufferedWriter = Files.newBufferedWriter(path,
                 StandardOpenOption.CREATE_NEW)) {
 			for(String line: efile) {

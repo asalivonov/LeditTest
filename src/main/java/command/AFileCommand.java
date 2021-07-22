@@ -30,7 +30,7 @@ abstract class AFileCommand implements IRunableCommand{
 		try {
 			continueEdit = execute();
 		} catch (IOException e) {
-			System.out.println("ERROR while running the command:" + name + " : " + e);
+			System.out.println("ERROR while running the command: " + name + " : " + e);
 		}
 		return continueEdit;
 	}
