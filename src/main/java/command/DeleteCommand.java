@@ -11,7 +11,10 @@ public class DeleteCommand extends AFileCommand {
 
 	@Override
 	protected boolean execute() throws IOException {
-		//-1 because we start form 0
+		if(efile.size() == 0) {
+			System.out.println("WARNING Looks like you are deleting line in empty file");
+			return true;
+		}
 		if(lineNumer > 0 && lineNumer <= efile.size()) {
 			efile.deleteLine(lineNumer);
 			System.out.println("deleted line:" + lineNumer);

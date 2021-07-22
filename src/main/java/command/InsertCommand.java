@@ -15,7 +15,10 @@ public class InsertCommand extends AFileCommand {
 
 	@Override
 	protected boolean execute() throws IOException {
-		if(lineNumer > 0 && lineNumer <= efile.size()) {
+		if(efile.size() == 0) {
+			System.out.println("WARNING Looks like you are adding the first line to the empty file");
+		}
+		if(lineNumer > 0 && (lineNumer <= efile.size()) || (efile.size() == 0 && lineNumer == 1)) {
 			String newLine = CommandProcessor.readConsole("Enter new line:");
 			efile.insertLine(newLine, lineNumer);
 			System.out.println("New line inserted:");
