@@ -41,6 +41,8 @@ public class App {
 			} catch (IOException e) {
 				System.out.println("CRITICAL ERROR during command execution");
 			}
+		} else {
+			
 		}
         
     }
@@ -51,7 +53,10 @@ public class App {
     	if(args != null && args.length > 0) {
     		File file = new File(args[0]);
     		List<String> lines = FileHelper.readLinesFromFile(file);
-			someFile = new EditableTextFile(file, lines);
+    		if(lines != null) {
+    			someFile = new EditableTextFile(file, lines);
+    		}
+			
     	}
     	
     	return someFile;

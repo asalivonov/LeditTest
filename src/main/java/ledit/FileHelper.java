@@ -22,7 +22,9 @@ public class FileHelper {
 			try (BufferedReader br = Files.newBufferedReader(Paths.get(file.getAbsolutePath()))) {
 				lines =  br.lines().collect(Collectors.toList());
 	        }
-		} 
+		} else {
+			System.out.println("CRITICAL ERROR File does not exist or we cannot read it, please try another file");
+		}
 		return lines;
 	}
 
