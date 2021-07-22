@@ -12,7 +12,7 @@ public class DeleteCommand extends AFileCommand {
 	@Override
 	protected boolean execute() throws IOException {
 		//-1 because we start form 0
-		if(lineNumer >= 1 && lineNumer < efile.size()-1) {
+		if(lineNumer > 0 && lineNumer <= efile.size()) {
 			efile.deleteLine(lineNumer);
 			System.out.println("deleted line:" + lineNumer);
 			listLines(lineNumer - 2, lineNumer + 2);
